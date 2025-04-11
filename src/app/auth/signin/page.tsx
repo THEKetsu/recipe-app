@@ -9,7 +9,7 @@ import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { signIn } from "@/app/lib/auth-client";
+import { signIn } from "@/lib/auth-client";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
@@ -84,6 +84,7 @@ export default function SignIn() {
                     email,
                     password,
                     callbackURL: "/dashboard",
+                    rememberMe: false,
                 },
                 {
                   onRequest: (ctx) => {
@@ -119,7 +120,8 @@ export default function SignIn() {
                     await signIn.social(
                     {
                       provider: "google",
-                      callbackURL: "/dashboard"
+                      callbackURL: "/",
+                      disableRedirect: false,
                     },
                     {
                       onRequest: (ctx) => {
@@ -150,7 +152,8 @@ export default function SignIn() {
                     await signIn.social(
                     {
                       provider: "github",
-                      callbackURL: "/dashboard"
+                      callbackURL: "/dashboard",
+                      disableRedirect: false,
                     },
                     {
                       onRequest: (ctx) => {

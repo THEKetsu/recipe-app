@@ -1,13 +1,18 @@
 "use client"
-import { authClient } from "@/lib/auth-client" // import the auth client
 
-export default function Dashboard() {
+import { authClient } from "@/lib/auth-client"
+
+
+
+// eslint-disable-next-line @next/next/no-async-client-component
+export default async function Dashboard() {
     // Check if the user is authenticated
     const { data: session, error } = await authClient.getSession()
-    return (
-        <div className="flex flex-col items-center justify-center h-screen">
-            <h1 className="text-2xl font-bold">Dashboard</h1>
-            <p className="mt-4 text-lg">Welcome to your dashboard!</p>
-        </div>
-    )
+    if (error) {
+        console.error("Error fetching session:", error)
+        return <p>Error fetching session</p>
+    }
+    if (!session) {
+        return <p>You are not authenticated. Please log in.</p>
+    }
 }

@@ -14,7 +14,7 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import Image from "next/image";
 import { Loader2, X } from "lucide-react";
-import { signUp } from "../../lib/auth-client"; // Adjusted import path
+import { signUp } from "../../../lib/auth-client"; // Adjusted import path
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
