@@ -120,7 +120,7 @@ export default function SignIn() {
                     await signIn.social(
                     {
                       provider: "google",
-                      callbackURL: "/",
+                      callbackURL: "/dashboard",
                       disableRedirect: false,
                     },
                     {
